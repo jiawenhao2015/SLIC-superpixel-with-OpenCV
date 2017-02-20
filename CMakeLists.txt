@@ -2,7 +2,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 PROJECT(SLIC-superpixel-with-OpenCV)
 
-SET(OpenCV_DIR "C:\\OpenCV2413\\opencv\\build")
+SET(OpenCV_DIR "D:\\opencv\\build")
 
 SET(BUILD_SHARED_LIBS on)
 
