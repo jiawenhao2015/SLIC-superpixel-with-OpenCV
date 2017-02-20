@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\f6b62a1252c0b862ebdad7b9b2c371f1\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{D2E31FF7-4D4D-4160-B709-620B12A3A880}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

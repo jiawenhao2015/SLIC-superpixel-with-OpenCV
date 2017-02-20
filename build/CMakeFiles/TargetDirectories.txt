@@ -1,0 +1,4 @@
+E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/build/CMakeFiles/demo.dir
+E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/build/CMakeFiles/ALL_BUILD.dir
+E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/build/CMakeFiles/slic.dir
+E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/build/CMakeFiles/ZERO_CHECK.dir

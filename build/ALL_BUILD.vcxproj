@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{88D0B8D4-A52E-4F01-BF23-5020D8D1983E}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\opencv\build\include;D:\opencv\build\include\opencv;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\opencv\build\include;D:\opencv\build\include\opencv;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\opencv\build\include;D:\opencv\build\include\opencv;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\opencv\build\include;D:\opencv\build\include\opencv;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"D:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/laboratory/mygithub/SLIC-superpixel-with-OpenCV -BE:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/build --check-stamp-file E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/CMakeLists.txt;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\CMakeLists.txt;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeSystem.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeSystemSpecificInitialize.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeCCompiler.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeCXXCompiler.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeSystemSpecificInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeGenericSystem.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\WindowsPaths.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC-C.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeRCCompiler.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeRCInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCommonLanguageInclude.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCXXInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Compiler\MSVC-CXX.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCommonLanguageInclude.cmake;D:\opencv\build\OpenCVConfig-version.cmake;D:\opencv\build\OpenCVConfig.cmake;D:\opencv\build\x64\vc12\lib\OpenCVConfig.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules-debug.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules-release.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"D:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/laboratory/mygithub/SLIC-superpixel-with-OpenCV -BE:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/build --check-stamp-file E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/CMakeLists.txt;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\CMakeLists.txt;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeSystem.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeSystemSpecificInitialize.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeCCompiler.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeCXXCompiler.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeSystemSpecificInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeGenericSystem.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\WindowsPaths.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC-C.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeRCCompiler.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeRCInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCommonLanguageInclude.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCXXInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Compiler\MSVC-CXX.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCommonLanguageInclude.cmake;D:\opencv\build\OpenCVConfig-version.cmake;D:\opencv\build\OpenCVConfig.cmake;D:\opencv\build\x64\vc12\lib\OpenCVConfig.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules-debug.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules-release.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"D:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/laboratory/mygithub/SLIC-superpixel-with-OpenCV -BE:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/build --check-stamp-file E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/CMakeLists.txt;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\CMakeLists.txt;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeSystem.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeSystemSpecificInitialize.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeCCompiler.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeCXXCompiler.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeSystemSpecificInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeGenericSystem.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\WindowsPaths.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC-C.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeRCCompiler.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeRCInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCommonLanguageInclude.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCXXInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Compiler\MSVC-CXX.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCommonLanguageInclude.cmake;D:\opencv\build\OpenCVConfig-version.cmake;D:\opencv\build\OpenCVConfig.cmake;D:\opencv\build\x64\vc12\lib\OpenCVConfig.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules-debug.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules-release.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"D:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/laboratory/mygithub/SLIC-superpixel-with-OpenCV -BE:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/build --check-stamp-file E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/CMakeLists.txt;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\CMakeLists.txt;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeSystem.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeSystemSpecificInitialize.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeCCompiler.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeCXXCompiler.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeSystemSpecificInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeGenericSystem.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\WindowsPaths.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC-C.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\3.3.2\CMakeRCCompiler.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeRCInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCommonLanguageInclude.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCXXInformation.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Compiler\MSVC-CXX.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\Platform\Windows-MSVC.cmake;D:\Program Files (x86)\CMake\share\cmake-3.3\Modules\CMakeCommonLanguageInclude.cmake;D:\opencv\build\OpenCVConfig-version.cmake;D:\opencv\build\OpenCVConfig.cmake;D:\opencv\build\x64\vc12\lib\OpenCVConfig.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules-debug.cmake;D:\opencv\build\x64\vc12\lib\OpenCVModules-release.cmake;E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/build/ZERO_CHECK.vcxproj">
+      <Project>A6897E07-CCDC-4EF2-8C15-C8DE632B8C89</Project>
+    </ProjectReference>
+    <ProjectReference Include="E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/build/demo.vcxproj">
+      <Project>499B11A8-3577-48B7-BF91-62F5575A74DD</Project>
+    </ProjectReference>
+    <ProjectReference Include="E:/laboratory/mygithub/SLIC-superpixel-with-OpenCV/build/slic.vcxproj">
+      <Project>B26003CF-37F9-472C-BEAE-5ED0E0B5FC27</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

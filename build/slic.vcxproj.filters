@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\slic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\slic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\laboratory\mygithub\SLIC-superpixel-with-OpenCV\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6EDA75FC-5342-4E3F-92AA-2DAFC249DBC3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B35CC035-4959-4DB1-9693-85A09E4FDC98}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
