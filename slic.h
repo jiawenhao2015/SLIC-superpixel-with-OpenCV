@@ -33,7 +33,8 @@
 #include <algorithm>
 
 #include <opencv2/opencv.hpp>
-
+using namespace std;
+using namespace cv;
 #if (defined WIN32 || defined _WIN32)
 #  define SLIC_EXPORTS __declspec(dllexport)
 #else
@@ -136,7 +137,9 @@ private:
 		const int&					width,
 		const int&					height);
 
+	void DrawSeedsOnImg(cv::Mat& image);
 
+	void DrawSeedsOnBody(cv::Mat& image);
 
 private:
 
@@ -269,4 +272,10 @@ private:
 
 	int*									label; // label record which superpixel a pixel belongs to
 	imageType								type;
+
+	vector<double> kseedsl;
+	vector<double> kseedsa;
+	vector<double> kseedsb;
+	vector<double> kseedsx;
+	vector<double> kseedsy;
 };

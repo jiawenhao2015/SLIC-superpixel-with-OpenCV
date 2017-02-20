@@ -30,7 +30,7 @@
 #include <iostream>
 #include <fstream>
 #include "slic.h"
-
+#include<omp.h>
 using namespace cv;
 using namespace std;
 
@@ -184,14 +184,21 @@ void SLIC::DoRGBtoLABConversion(
 	avec = new double[sz];
 	bvec = new double[sz];
 
-	for( int j = 0; j < sz; j++ )
+	int j = 0;
+	#pragma omp parallel
 	{
-		int r = (ubuff[j] >> 16) & 0xFF;
-		int g = (ubuff[j] >>  8) & 0xFF;
-		int b = (ubuff[j]      ) & 0xFF;
+		#pragma omp for
+		for (j = 0; j < sz; j++)
+		{
+			int r = (ubuff[j] >> 16) & 0xFF;
+			int g = (ubuff[j] >> 8) & 0xFF;
+			int b = (ubuff[j]) & 0xFF;
 
-		RGB2LAB( r, g, b, lvec[j], avec[j], bvec[j] );
+			RGB2LAB(r, g, b, lvec[j], avec[j], bvec[j]);
+		}
 	}
+	
+	int i = 0;
 }
 
 //===========================================================================
@@ -434,7 +441,7 @@ void SLIC::DetectLabEdges(
 }
 
 //===========================================================================
-///	PerturbSeeds
+///	PerturbSeeds 将种子点移动到8邻域 梯度最小的点  也就是最平坦的点
 //===========================================================================
 void SLIC::PerturbSeeds(
 	vector<double>&				kseedsl,
@@ -478,7 +485,11 @@ void SLIC::PerturbSeeds(
 			kseedsa[n] = m_avec[storeind];
 			kseedsb[n] = m_bvec[storeind];
 		}
+
+		//cout << "x:" << kseedsx[n] << " y:" << kseedsy[n] << endl;
+
 	}
+	cout <<"numseeds:"<< numseeds << endl;
 }
 
 
@@ -698,8 +709,8 @@ void SLIC::PerformSuperpixelSegmentation_VariableSandM(
 
 					if( dist < distvec[i] )
 					{
-						distvec[i] = dist;
-						klabels[i]  = n;
+						distvec[i] = dist;                             ///////////////i代表当前像素的id   
+						klabels[i]  = n;                               ////////////////n代表种子点的id  记录当前像素i属于种子n的类内
 					}
 				}
 			}
@@ -712,11 +723,16 @@ void SLIC::PerformSuperpixelSegmentation_VariableSandM(
 			maxlab.assign(numk,1);
 			maxxy.assign(numk,1);
 		}
-		{for( int i = 0; i < sz; i++ )
+		int i = 0;
+		#pragma omp parallel
 		{
+			#pragma omp for
+			for (i = 0; i < sz; i++)
+			{
 			if(maxlab[klabels[i]] < distlab[i]) maxlab[klabels[i]] = distlab[i];
-			if(maxxy[klabels[i]] < distxy[i]) maxxy[klabels[i]] = distxy[i];
-		}}
+				if (maxxy[klabels[i]] < distxy[i]) maxxy[klabels[i]] = distxy[i];
+			}
+		}
 		//-----------------------------------------------------------------
 		// Recalculate the centroid and store in the seed values
 		//-----------------------------------------------------------------
@@ -726,20 +742,24 @@ void SLIC::PerformSuperpixelSegmentation_VariableSandM(
 		sigmax.assign(numk, 0);
 		sigmay.assign(numk, 0);
 		clustersize.assign(numk, 0);
-
-		for( int j = 0; j < sz; j++ )
+		int j = 0;
+		#pragma omp parallel
 		{
-			int temp = klabels[j];
-			_ASSERT(klabels[j] >= 0);
-			sigmal[klabels[j]] += m_lvec[j];
-			sigmaa[klabels[j]] += m_avec[j];
-			sigmab[klabels[j]] += m_bvec[j];
-			sigmax[klabels[j]] += (j%m_width);
-			sigmay[klabels[j]] += (j/m_width);
+			#pragma omp for
+			for (j = 0; j < sz; j++)
+			{
+				int temp = klabels[j];
+				_ASSERT(klabels[j] >= 0);
+				sigmal[klabels[j]] += m_lvec[j];
+				sigmaa[klabels[j]] += m_avec[j];
+				sigmab[klabels[j]] += m_bvec[j];
+				sigmax[klabels[j]] += (j%m_width);
+				sigmay[klabels[j]] += (j / m_width);
 
-			clustersize[klabels[j]]++;
+				clustersize[klabels[j]]++;
+			}
 		}
-
+		
 		{for( int k = 0; k < numk; k++ )
 		{
 			//_ASSERT(clustersize[k] > 0);
@@ -950,11 +970,12 @@ void SLIC::PerformSLICO_ForGivenK(
 	const int&					K,//required number of superpixels
 	const double&				m)//weight given to spatial distance
 {
-	vector<double> kseedsl(0);
-	vector<double> kseedsa(0);
-	vector<double> kseedsb(0);
-	vector<double> kseedsx(0);
-	vector<double> kseedsy(0);
+	//作为类内成员变量  方便共享
+	//vector<double> kseedsl(0);
+	//vector<double> kseedsa(0);
+	//vector<double> kseedsb(0);
+	//vector<double> kseedsx(0);
+	//vector<double> kseedsy(0);
 
 	//--------------------------------------------------
 	m_width  = width;
@@ -962,7 +983,15 @@ void SLIC::PerformSLICO_ForGivenK(
 	int sz = m_width*m_height;
 	//--------------------------------------------------
 	//if(0 == klabels) klabels = new int[sz];
-	for( int s = 0; s < sz; s++ ) klabels[s] = -1;
+	int s = 0;
+	#pragma omp parallel
+	{
+		#pragma omp for
+		for ( s = 0; s < sz; s++)
+		{
+			klabels[s] = -1;
+		}
+	}	
 	//--------------------------------------------------
 	if(1)//LAB
 	{
@@ -994,6 +1023,46 @@ void SLIC::PerformSLICO_ForGivenK(
 	EnforceLabelConnectivity(klabels, m_width, m_height, nlabels, numlabels, K);
 	{for(int i = 0; i < sz; i++ ) klabels[i] = nlabels[i];}
 	if(nlabels) delete [] nlabels;
+
+	///////显示种子点
+	cv::Mat result(m_height, m_width, CV_8UC4);
+	memcpy(result.data, bufferRGB, m_width*m_height*sizeof(UINT));
+
+	cvtColor(result, result, CV_BGRA2BGR); ////四通道已经变成三通道了@@@
+
+
+	//文件是否存在 存在就删除 
+	//if ((_access("seeds.txt", 0)) != -1)
+	//{
+	//	printf_s("File crt_ACCESS.C exists.\n");
+	//	if (remove("seeds.txt"))
+	//		printf("Could not delete the file &s \n", "1.txt");
+	//	else printf("OK \n");
+	//}
+	//ofstream fout;
+	//fout.open("seeds.txt", ios::app);
+	//fout.close();
+
+
+	
+	for (int i = 0; i < kseedsx.size(); i++)
+	{
+	//	cout << i << " " << kseedsx[i] << " " << kseedsy[i]<<endl;
+
+		result.at<Vec3b>((int)kseedsy[i], (int)kseedsx[i])[0] = 0;//b
+		result.at<Vec3b>((int)kseedsy[i], (int)kseedsx[i])[1] = 0;//g 
+		result.at<Vec3b>((int)kseedsy[i], (int)kseedsx[i])[2] = 255;//r		
+		
+		//fout << i << " " << kseedsx[i] << " " << kseedsy[i] << endl;
+	
+	}
+
+	//fout.close();
+
+	cv::imshow("seed", result);
+	////cv::waitKey(0);
+
+
 }
 
 void SLIC::PerformSLICO_ForGivenK(
@@ -1079,6 +1148,67 @@ int* SLIC::GetLabel()
 	return label;
 }
 
+///显示种子点
+//有效人体部位显示种子点 其余背景部分不显示    
+//判断是否有效：当前种子点八邻域 是否均有效 
+//给出经过超像素处理之后的人体点
+void SLIC::DrawSeedsOnBody(cv::Mat& image)
+{
+	int bodyparts = 0;//身体点个数
+
+	cv::Mat body(m_height, m_width, CV_8UC3);//精简后的人体点图
+	for (int i = 0; i < m_height;i++)
+	{
+		for (int j = 0; j < m_width;j++)
+		{
+			body.at<Vec3b>(i, j)[0] = 255;
+			body.at<Vec3b>(i, j)[1] = 255;
+			body.at<Vec3b>(i, j)[2] = 255;
+		}
+	}
+
+	for (int i = 0; i < kseedsx.size(); i++)
+	{		
+		bool flag = false;
+		int count = 0;
+		for (int x = -1; x <= 1;x++)
+		{
+			for (int y = -1; y <= 1;y++)
+			{	//八邻域有白色 认为当前无效   
+				if (!(image.at<Vec3b>((int)kseedsy[i]+y, (int)kseedsx[i]+x)[0] == 255 &&
+					image.at<Vec3b>((int)kseedsy[i]+y, (int)kseedsx[i]+x)[1] == 255 &&
+					image.at<Vec3b>((int)kseedsy[i]+y, (int)kseedsx[i]+x)[2] == 255))
+				{
+					count++;
+					//flag = true;
+					//x = 2;//结束循环
+				}
+			}
+		}
+		if (count >= 6) //8邻域算上自己有9个元素  有6个以上非白色 认为有效
+		{
+			flag = true;
+		}
+		if (flag)
+		{
+			cv::Point position((int)kseedsx[i], (int)kseedsy[i]);
+			circle(image, position, 2, Scalar(0, 0, 0), -1);
+			bodyparts++;
+
+			
+			circle(body, position, 2, Scalar(255, 0, 0), -1);
+		}
+	}
+	cout << "bodyparts:" << bodyparts << endl;
+	
+	imshow("body",body);
+	
+	
+	
+
+
+}
+
 cv::Mat SLIC::GetImgWithContours(cv::Scalar color)
 {
 	if (type == GRAY) {
@@ -1092,6 +1222,9 @@ cv::Mat SLIC::GetImgWithContours(cv::Scalar color)
 		cv::Mat result(m_height, m_width, CV_8UC4);
 		memcpy(result.data, bufferRGB, m_width*m_height*sizeof(UINT));
 		cvtColor(result, result, CV_BGRA2BGR);
+
+		DrawSeedsOnBody(result);
+		
 		return result;
 	}
 

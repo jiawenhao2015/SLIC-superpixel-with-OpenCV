@@ -19,8 +19,8 @@ int main(int argc, char** argv)
 	//img = imread(argv[1]);
 	//int numSuperpixel = atoi(argv[2]);
 
-	img = imread("..\\sample_image\\bird.jpg");
-	int numSuperpixel = 100;
+	img = cv::imread("E:\\laboratory\\mygithub\\SLIC-superpixel-with-OpenCV\\2.jpg");
+	int numSuperpixel = 2500;
 
 	SLIC slic;
 	
@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 		result = slic.GetImgWithContours(cv::Scalar(128));
 
 	char result_name[128];
-	sprintf_s(result_name, 128, "..\\result_image\\result_%d.jpg", numSuperpixel);
+	sprintf_s(result_name, 128, "result.jpg", numSuperpixel);
 	cv::imwrite(result_name, result);
 	cv::imshow("result", result);
 	cv::waitKey(0);
