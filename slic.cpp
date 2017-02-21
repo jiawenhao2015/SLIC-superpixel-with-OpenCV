@@ -579,7 +579,7 @@ void SLIC::GetLABXYSeeds_ForGivenK(
 	int yoff = step/2;
 
 	int n(0);int r(0);
-	for( int y = 0; y < m_height; y++ )
+	for( int y = 0; y < m_height; y++ )//循环不一定正好是输入的k次(k即为超像素个数) 在k上下浮动 
 	{
 		int Y = y*step + yoff;
 		if( Y > m_height-1 ) break;
@@ -608,7 +608,7 @@ void SLIC::GetLABXYSeeds_ForGivenK(
 		}
 		r++;
 	}
-
+	//cout <<"GetLABXYSeeds_ForGivenK:n="<< n << endl;
 	if(perturbseeds)
 	{
 		PerturbSeeds(kseedsl, kseedsa, kseedsb, kseedsx, kseedsy, edgemag);
@@ -1016,6 +1016,8 @@ void SLIC::PerformSLICO_ForGivenK(
 
 	int STEP = sqrt(double(sz)/double(K)) + 2.0;//adding a small value in the even the STEP size is too small.
 	//PerformSuperpixelSLIC(kseedsl, kseedsa, kseedsb, kseedsx, kseedsy, klabels, STEP, edgemag, m);
+
+	//迭代次数默认为10 待修改 可适当改小 效果没有明显变差 但效率提高
 	PerformSuperpixelSegmentation_VariableSandM(kseedsl,kseedsa,kseedsb,kseedsx,kseedsy,klabels,STEP,10);
 	numlabels = kseedsl.size();
 
@@ -1042,8 +1044,6 @@ void SLIC::PerformSLICO_ForGivenK(
 	//ofstream fout;
 	//fout.open("seeds.txt", ios::app);
 	//fout.close();
-
-
 	
 	for (int i = 0; i < kseedsx.size(); i++)
 	{
@@ -1053,12 +1053,9 @@ void SLIC::PerformSLICO_ForGivenK(
 		result.at<Vec3b>((int)kseedsy[i], (int)kseedsx[i])[1] = 0;//g 
 		result.at<Vec3b>((int)kseedsy[i], (int)kseedsx[i])[2] = 255;//r		
 		
-		//fout << i << " " << kseedsx[i] << " " << kseedsy[i] << endl;
-	
+		//fout << i << " " << kseedsx[i] << " " << kseedsy[i] << endl;	
 	}
-
 	//fout.close();
-
 	cv::imshow("seed", result);
 	////cv::waitKey(0);
 
@@ -1194,7 +1191,6 @@ void SLIC::DrawSeedsOnBody(cv::Mat& image)
 			cv::Point position((int)kseedsx[i], (int)kseedsy[i]);
 			circle(image, position, 2, Scalar(0, 0, 0), -1);
 			bodyparts++;
-
 			
 			circle(body, position, 2, Scalar(255, 0, 0), -1);
 		}
@@ -1202,11 +1198,6 @@ void SLIC::DrawSeedsOnBody(cv::Mat& image)
 	cout << "bodyparts:" << bodyparts << endl;
 	
 	imshow("body",body);
-	
-	
-	
-
-
 }
 
 cv::Mat SLIC::GetImgWithContours(cv::Scalar color)
