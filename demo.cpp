@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 	printf("time elapsed: %f (ms), for img size: %dx%d\n", (float)(clock_end - clock_begin) / CLOCKS_PER_SEC * 1000, img.rows, img.cols);
 
 	if (img.channels() == 3) 
-		result = slic.GetImgWithContours(cv::Scalar(255, 255, 0 ));
+		result = slic.GetImgWithContours(cv::Scalar(0, 0, 255 ));
 	else
 		result = slic.GetImgWithContours(cv::Scalar(128));
 
